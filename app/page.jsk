@@ -1,0 +1,101 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+export default function DsportStore() {
+  const [cart, setCart] = useState([]);
+
+  const products = [
+    { id: 1, name: "Goalkeeper Gloves Pro", price: 25000, sizes: ["7", "8", "9", "10"], colors: ["Black", "White"] },
+    { id: 2, name: "Goalkeeper Jersey", price: 18000, sizes: ["S", "M", "L", "XL"], colors: ["Green", "Yellow"] },
+    { id: 3, name: "Goalkeeper Shorts", price: 12000, sizes: ["S", "M", "L"], colors: ["Black"] },
+    { id: 4, name: "Goalkeeper Boots", price: 45000, sizes: ["40", "41", "42", "43", "44"], colors: ["Black", "Orange"] },
+  ];
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const deliveryFee = 3000;
+  const subtotal = cart.reduce((sum, p) => sum + p.price, 0);
+  const total = subtotal + (cart.length > 0 ? deliveryFee : 0);
+
+  const whatsappOrder = () => {
+    const message = cart
+      .map((p) => `${p.name} - ₦${p.price.toLocaleString()}`)
+      .join("%0A");
+
+    window.open(
+      `https://wa.me/2348084665060?text=Hello%20Dsport,%20I%20want%20to%20order:%0A${message}%0A%0ADelivery%20Fee:%20₦${deliveryFee.toLocaleString()}%0ATotal:%20₦${total.toLocaleString()}`,
+      "_blank"
+    );
+  };
+
+  const paystackPay = () => {
+    alert("Paystack integration ready. Connect your Paystack public key to go live.");
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-center mb-1">Dsport Goalkeeper Store</h1>
+      <p className="text-center text-gray-600 mb-6">
+        Quality Goalkeeper Kits • Online Payment & WhatsApp Orders • Nationwide Delivery
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <Card key={product.id} className="rounded-2xl shadow-md">
+            <CardContent className="p-4">
+              <div className="h-40 bg-gray-300 rounded-xl mb-4 flex items-center justify-center">
+                <span className="text-gray-600">Product Image</span>
+              </div>
+              <h2 className="text-lg font-semibold">{product.name}</h2>
+              <p className="text-xl font-bold mt-1">₦{product.price.toLocaleString()}</p>
+
+              <p className="text-sm mt-2">Sizes: {product.sizes.join(", ")}</p>
+              <p className="text-sm">Colors: {product.colors.join(", ")}</p>
+
+              <Button className="mt-4 w-full" onClick={() => addToCart(product)}>
+                Add to Cart
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Cart */}
+      <div className="mt-10 bg-white p-6 rounded-2xl shadow-lg max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+        {cart.length === 0 && <p className="text-gray-500">No items added yet.</p>}
+
+        {cart.map((item, index) => (
+          <div key={index} className="flex justify-between mb-2">
+            <span>{item.name}</span>
+            <span>₦{item.price.toLocaleString()}</span>
+          </div>
+        ))}
+
+        {cart.length > 0 && (
+          <>
+            <hr className="my-3" />
+            <p>Subtotal: ₦{subtotal.toLocaleString()}</p>
+            <p>Delivery Fee: ₦{deliveryFee.toLocaleString()}</p>
+            <p className="font-bold">Total: ₦{total.toLocaleString()}</p>
+
+            <Button className="mt-4 w-full" onClick={paystackPay}>
+              Pay Online (Paystack)
+            </Button>
+
+            <Button className="mt-2 w-full" variant="outline" onClick={whatsappOrder}>
+              Order via WhatsApp
+            </Button>
+          </>
+        )}
+      </div>
+
+      <footer className="text-center mt-10 text-gray-600">
+        © 2025 Dsport • WhatsApp: +234 808 466 5060 • Nationwide Delivery
+      </footer>
+    </div>
+  );
+}
