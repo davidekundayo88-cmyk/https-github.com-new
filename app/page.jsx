@@ -30,31 +30,49 @@ export default function Home() {
           }}
         >
           {/* PRODUCT 1 */}
-          <div style={cardStyle}>
-            <h3>Goalkeeper Gloves</h3>
-            <p>High-grip professional gloves</p>
-            <strong>₦30,000</strong>
-            <br />
-            <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
-          </div>
+         <div style={cardStyle}>
+  <img
+    src="/download.jpg"
+    alt="Goalkeeper Gloves"
+    style={{ width: "100%", borderRadius: "8px", marginBottom: "10px" }}
+  />
+  <h3>Goalkeeper Gloves</h3>
+  <p>High-grip professional gloves</p>
+  <strong>₦30,000</strong>
+  <br />
+  <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
+</div>
+
 
           {/* PRODUCT 2 */}
-          <div style={cardStyle}>
-            <h3>Goalkeeper Jersey</h3>
-            <p>Breathable match jersey</p>
-            <strong>₦15,000</strong>
-            <br />
-            <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
-          </div>
+         <div style={cardStyle}>
+  <img
+    src="/unnamed.jpg"
+    alt="Goalkeeper Jersey"
+    style={{ width: "100%", borderRadius: "8px", marginBottom: "10px" }}
+  />
+  <h3>Goalkeeper Jersey</h3>
+  <p>Breathable match jersey</p>
+  <strong>₦15,000</strong>
+  <br />
+  <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
+</div>
+
 
           {/* PRODUCT 3 */}
-          <div style={cardStyle}>
-            <h3>Full Goalkeeper Kit</h3>
-            <p>Gloves + Jersey + Shorts</p>
-            <strong>₦50,000</strong>
-            <br />
-            <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
-          </div>
+        <div style={cardStyle}>
+  <img
+    src="/download.jpg"
+    alt="Full Goalkeeper Kit"
+    style={{ width: "100%", borderRadius: "8px", marginBottom: "10px" }}
+  />
+  <h3>Full Goalkeeper Kit</h3>
+  <p>Gloves + Jersey + Shorts</p>
+  <strong>₦50,000</strong>
+  <br />
+  <a href="https://wa.me/2348084665060">Order on WhatsApp</a>
+</div>
+
         </div>
       </section>
 
