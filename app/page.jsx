@@ -73,3 +73,18 @@ const cardStyle = {
   padding: "20px",
   textAlign: "center",
 };
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <main style={{ textAlign: "center", padding: "40px" }}>
+      <Image
+        src="/Gemini_Generated_Image_4cr2hw4cr2hw4cr2-removebg-preview.png"
+        alt="Dsport Pro Logo"
+        width={300}
+        height={300}
+      />
+      <h1>Dsport Pro Goalkeeper Kit Store</h1>
+    </main>
+  );
+}
